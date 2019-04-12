@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        .admin-link {
+            width: 80px;
+            height: 40px;
+        }
+    </style>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Admin</title>
+</head>
+<body>
+<span th:if="${(currentNode.parentPage!= null)}">
+    <a th:href="@{/page(currentNodeId=${currentNode.parentPage.id})}"><img
+            src="https://image.flaticon.com/icons/png/512/0/340.png" style="height: 25px; width: 25px"></a>
+</span>
+<h1 th:text="${currentNode.id}"></h1>
+<span class="admin-link" align="center">
+    <a th:href="@{/page/{id}/edit(id=${currentNode.id})}"><img src="http://simpleicon.com/wp-content/uploads/pencil.png"
+                                                               style="width: 40px;"></a>
+    <a th:href="@{/page/create(parentPageId=${currentNode.id})}"> <img
+            src="https://image.flaticon.com/icons/png/512/69/69301.png"
+            style="width: 40px;"> </a>
+</span>
+<!--todo add delete button and edit link -->
+
+<div class="container">
+    <th:block th:each="childNode : ${childNodes}">
+        <div class="row" style="margin: 5px 0;">
+            <a class="admin-link" th:href="@{/page(currentNodeId=${childNode.id})}">
+                <div class="col-sm-3" th:text="${childNode.id}"></div>
+            </a>
+            <a class="admin-link" th:href="@{/page/{id}/edit(id=${childNode.id})}">
+                <div class="col-sm-3"><img src="http://simpleicon.com/wp-content/uploads/pencil.png"
+                                           style="width: 40px;"></div>
+            </a>
+            <form th:action="@{/page/{id}(id=${childNode.Id})}" method="post">
+                <input type="hidden" name="_method" value="delete">
+                <input class="admin-link" type="submit" value="DELETE">
+
+            </form>
+        </div>
+    </th:block>
+</div>
+
+</body>
+
+</html>

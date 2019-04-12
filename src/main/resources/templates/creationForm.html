@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Creation Page</title>
+</head>
+<body>
+<div>
+    <form action="/page" method="post" style="width: 30%">
+        <input type="text" name="id"/> ID<br>
+        <br>
+        <input type="text" name="aliasOfId"> Alias<br>
+
+        <br>
+        <input type="text" name="title">Title<br>
+        <br>
+        <input type="text" name="titleUa">Title - ua<br>
+        <br>
+        <input type="text" name="caption">Caption<br>
+        <br>
+        <input type="text" name="captionUa">Caption - ua<br>
+        <br>
+        <textarea name="content"></textarea> Content<br>
+        <br>
+        <textarea name="contentUa"></textarea> Контент<br>
+        <br>
+        <textarea name="intro"></textarea> Intro<br>
+        <br>
+        <textarea name="introUa"></textarea> Intro ua<br>
+        <br>
+        <input type="text" name="orderNum"> Order Number<br>
+        <br>
+        <select name="orderType">
+            <option></option>
+            <option th:each="ot : ${T(ua.kpi.tef.cms.entities.OrderType).values()}"
+                    th:value="${ot}"
+                    th:text="${ot}">
+            </option>
+        </select>Order Type<br>
+        <br>
+        <select name="containerType">
+            <option></option>
+            <option th:each="ct : ${T(ua.kpi.tef.cms.entities.ContainerType).values()}"
+                    th:value="${ct}"
+                    th:text="${ct}">
+            </option>
+        </select>Container type<br>
+        <br>
+        <input type="text" name="linkToImage">Link to image<br>
+        <br>
+        <input type="text" name="linkToImageUa">Link to Image ua <br>
+        <br>
+        <input type="text" name="parentPageId" th:value="${parentPageId}">Parent Page Id <br>
+        <input type="submit">
+    </form>
+</div>
+<!--private String title;-->
+<!--private String titleUa;-->
+<!--private String caption;-->
+<!--private String captionUa;-->
+<!--private String content;-->
+<!--private String contentUa;-->
+<!--private String intro;-->
+<!--private String introUa;-->
+<!--private Integer orderNum;-->
+<!--@Enumerated(EnumType.STRING)-->
+<!--private OrderType orderType;-->
+<!--@Enumerated(EnumType.STRING)-->
+<!--private ContainerType containerType;-->
+<!--private String linkToImageUa;-->
+
+<!--private String linkToImage;-->
+
+</body>
+</html>

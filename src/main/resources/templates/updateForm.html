@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update</title>
+</head>
+<body>
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Creation Page</title>
+</head>
+<body>
+<div>
+    <form th:action="@{/page/{id}(id=${page.id})}" method="post" style="width:30% ">
+        <input type="text" name="aliasOfId" th:value="${page.aliasOf}==null?'':${page.aliasOf.id}"> Alias
+
+        <br>
+
+        <input type="text" name="title" th:value="${page.title}"> Title<br>
+        <br>
+        <input type="text" name="titleUa" th:value="${page.titleUa}"> Title - ua<br>
+        <br>
+        <input type="text" name="caption" th:value="${page.caption}"> Caption<br>
+        <br>
+        <input type="text" name="captionUa" th:value="${page.captionUa}"> Caption - ua<br>
+        <br>
+        <textarea name="content" th:text="${page.content}"></textarea> Content<br>
+        <br>
+        <textarea name="contentUa" th:text="${page.contentUa}"></textarea> Контент<br>
+        <br>
+        <textarea name="intro" th:text="${page.intro}"></textarea> Intro<br>
+        <br>
+        <textarea name="introUa" th:text="${page.introUa}"></textarea> Intro ua<br>
+        <br>
+        <input type="text" name="orderNum" th:value="${page.orderNum}"> Order Number<br>
+        <br>
+        <select name="orderType" id="orderType">
+            <option></option>
+            <option th:each="ot : ${T(ua.kpi.tef.cms.entities.OrderType).values()}"
+                    th:value="${ot}"
+                    th:text="${ot}" th:selected="${ot}==${page.orderType}">
+            </option>
+        </select>Order Type<br>
+        <br>
+        <select name="containerType" id="containerType">
+            <option></option>
+            <option th:each="ct : ${T(ua.kpi.tef.cms.entities.ContainerType).values()}"
+                    th:value="${ct}" th:text="${ct}" th:selected="${page.containerType}==${ct}">
+            </option>
+        </select>Container type<br>
+        <br>
+        <input type="text" name="linkToImage" th:value="${page.linkToImage}"> Link to image<br>
+        <br>
+        <input type="text" name="linkToImageUa" th:value="${page.linkToImageUa}"> Link to Image ua <br>
+        <br>
+        <input type="text" name="parentPageId"
+               th:if="${page.parentPage}!=null" th:value="${page.parentPage.id}"> Parent Page Id <br>
+        <input type="hidden" name="_method" value="put"/>
+        <input type="submit">
+    </form>
+</div>
+<!--private String title;-->
+<!--private String titleUa;-->
+<!--private String caption;-->
+<!--private String captionUa;-->
+<!--private String content;-->
+<!--private String contentUa;-->
+<!--private String intro;-->
+<!--private String introUa;-->
+<!--private Integer orderNum;-->
+<!--@Enumerated(EnumType.STRING)-->
+<!--private OrderType orderType;-->
+<!--@Enumerated(EnumType.STRING)-->
+<!--private ContainerType containerType;-->
+<!--private String linkToImageUa;-->
+
+<!--private String linkToImage;-->
+
+</body>
+</html>
+</body>
+</html>
